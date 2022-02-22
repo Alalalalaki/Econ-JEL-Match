@@ -66,6 +66,7 @@ def prepare_data():
     y_train, y_test, X_train, X_test = jel_dummy_matrix, None, token_matrix, None
     return vectorizer, y_train, y_test, X_train, X_test, jel_labels
 
+
 def find_top_predict(classifier, X_individual, jel_labels, top_n=20):
     predict_proba_ = classifier.predict_proba(X_individual)
     predict_proba_ = np.array([a[0][1] for a in predict_proba_])
@@ -74,7 +75,8 @@ def find_top_predict(classifier, X_individual, jel_labels, top_n=20):
         top_n = (predict_proba_ > top_n).sum()
     y_predict_jel = jel_labels[jel_rank][:top_n]
     y_predict_jel_proba = predict_proba_[jel_rank][:top_n]
-    return y_predict_jel,y_predict_jel_proba
+    return y_predict_jel, y_predict_jel_proba
+
 
 def custom_metric(classifier, X_test, y_test, jel_labels, top_n=20):
     find_rates = []
@@ -105,21 +107,17 @@ def train_model(X_train, y_train):
 
 
 def main():
-    vectorizer, y_train, y_test, X_train, X_test,  jel_labels = prepare_data()
+    vectorizer, y_train, y_test, X_train, X_test, jel_labels = prepare_data()
     classifier = train_model(X_train, y_train)
     # custom_metric(classifier, X_test, y_test,  jel_labels, top_n=10)
     # custom_metric(classifier, X_test, y_test,  jel_labels, top_n=20)
     # custom_metric(classifier, X_test, y_test,  jel_labels, top_n=25)
 
-    joblib.dump(jel_labels, "../Data/jel_labels.pkl")
-    joblib.dump([vectorizer, classifier], "../Data/model.pkl")
+    joblib.dump(jel_labels, "../Data/jel_labels.pkl", protocol=4)
+    joblib.dump([vectorizer, classifier], "../Data/model.pkl", protocol=4)
 
     # load
 
 
-
 if __name__ == '__main__':
     main()
-
-
-
