@@ -40,7 +40,7 @@ def prepare_jel_description():
 
 def main():
     jel_des = prepare_jel_description()
-    jel_des.to_pickle("../Data/jel_des.pkl")
+    jel_des.to_pickle("../Data/jel_des.pkl", protocol=4)
 
 if __name__ == '__main__':
     main()
