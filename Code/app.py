@@ -83,11 +83,13 @@ def sidebar_info():
     top_n = st.sidebar.number_input('# of JEL codes predicted', value=20, min_value=10, max_value=50)
 
     st.sidebar.header("Report Issues")
+    # somehow this does not work <a href="https://github.com/Alalalalaki/Econ-JEL-Match">github repo</a>
     st.sidebar.markdown("""
     <div style="font-size: small">
-    Report an issue or suggestion at <a href="https://github.com/Alalalalaki/Econ-JEL-Match">github repo</a>
+    Report an issue or suggestion at [https://github.com/Alalalalaki/Econ-JEL-Match]
     </div>
     """, unsafe_allow_html=True)
+    st.sidebar.markdown("[github repo](https://github.com/Alalalalaki/Econ-JEL-Match)")
     return top_n
 
 
