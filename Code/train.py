@@ -113,8 +113,8 @@ def main():
     # custom_metric(classifier, X_test, y_test,  jel_labels, top_n=20)
     # custom_metric(classifier, X_test, y_test,  jel_labels, top_n=25)
 
-    joblib.dump(jel_labels, "../Data/jel_labels.pkl", protocol=4)
-    joblib.dump([vectorizer, classifier], "../Data/model.pkl", protocol=4, compress=3)
+    joblib.dump(jel_labels, "../Data/jel_labels.pkl")
+    joblib.dump([vectorizer, classifier], "../Data/model.pkl", compress=3)
 
 
 if __name__ == '__main__':
