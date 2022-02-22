@@ -19,7 +19,7 @@ def stemming(sentence, stemmer):
     return stemSentence
 
 
-def prepare_date():
+def prepare_data():
     # https://media.githubusercontent.com/media/Alalalalaki/Econ-Paper-Search/main/Data/papers.csv
     df = pd.read_csv("https://github.com/Alalalalaki/Econ-Paper-Search/blob/main/Data/papers.csv?raw=true")
 
@@ -95,7 +95,7 @@ def custom_metric(classifier, X_test, y_test, jel_labels, top_n=20):
 
 
 def train_model(X_train, y_train):
-    lr = LogisticRegression(solver='saga', max_iter=1000, C=1,
+    lr = LogisticRegression(solver='saga', max_iter=500, C=1,
                             class_weight="balanced", penalty="l1",  # "elasticnet"
                             )
     classifier = MultiOutputClassifier(lr, n_jobs=-1)
@@ -105,11 +105,11 @@ def train_model(X_train, y_train):
 
 
 def main():
-    vectorizer, y_train, y_test, X_train, X_test,  jel_labels = prepare_date()
+    vectorizer, y_train, y_test, X_train, X_test,  jel_labels = prepare_data()
     classifier = train_model(X_train, y_train)
-    custom_metric(classifier, X_test, y_test,  jel_labels, top_n=10)
-    custom_metric(classifier, X_test, y_test,  jel_labels, top_n=20)
-    custom_metric(classifier, X_test, y_test,  jel_labels, top_n=25)
+    # custom_metric(classifier, X_test, y_test,  jel_labels, top_n=10)
+    # custom_metric(classifier, X_test, y_test,  jel_labels, top_n=20)
+    # custom_metric(classifier, X_test, y_test,  jel_labels, top_n=25)
 
     joblib.dump(jel_labels, "../Data/jel_labels.pkl")
     joblib.dump([vectorizer, classifier], "../Data/model.pkl")
@@ -120,3 +120,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+

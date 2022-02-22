@@ -71,9 +71,11 @@ def sidebar_info():
     st.sidebar.markdown("""
     <div style="font-size: small;">
     This is a simple app to match JEL codes for economics papers based on the abstract text.<br>
-    It uses a simple logistic regression model trained on real economics publications of major economics jounrals in last 20 years.<br>
-    It shows the top 20 JEL codes predicted by the model and currectly have over 70 percent accuracy.<br>
-    <font style="color:green;">If you feel that the results are not satisfactory, you can try adding more texts from your paper or even directly adding the keywords that you are looking for.</font>
+    It uses a simple logistic regression model trained on real economics publications in last 20 years.<br>
+    A few JEL codes that are rare in the literature are dropped, and <font style="color:green;">the model favors the JEL codes that are common</font>.<br>
+    The results shown are the top 20 JEL codes predicted by the model and you can choose to show more by setting the config below.<br>
+    The model currectly has <font style="color:green;">over 70 percent accuracy (true positive)</font> on the test sample.<br>
+    <font style="color:green;">If you feel that the results are not satisfactory, you can try adding more texts from your paper.</font>
     </div>
     """, unsafe_allow_html=True)  # Author: Xuanli Zhu.<br>
 
@@ -83,7 +85,7 @@ def sidebar_info():
     st.sidebar.header("Report Issues")
     st.sidebar.markdown("""
     <div style="font-size: small">
-    Report an issue or comment at <a href="https://github.com/Alalalalaki/Econ-JEL-Match">github repo</a>
+    Report an issue or suggestion at <a href="https://github.com/Alalalalaki/Econ-JEL-Match">github repo</a>
     </div>
     """, unsafe_allow_html=True)
     return top_n
@@ -97,7 +99,13 @@ def main():
     form = st.form(key='search')
 
     abstract = form.text_area('Enter Abstract', height=300)
-    button_clicked = form.form_submit_button(label='Match')
+    a1, a2 = form.columns([3.9, 1])
+    button_clicked = a1.form_submit_button(label='Match')
+    a2.markdown(
+        """<div style="color: green; font-size: small;">
+        (see left sidebar for help)
+        </div>""",
+        unsafe_allow_html=True)
 
     jel_des, jel_labels, vectorizer, classifier = load_file()
 
