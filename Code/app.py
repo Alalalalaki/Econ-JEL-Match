@@ -14,7 +14,7 @@ st.set_page_config(page_title=None, page_icon=None, layout='centered', initial_s
 """
 
 
-@st.cache(show_spinner=False, allow_output_mutation=True)
+@st.cache(show_spinner=False)  # allow_output_mutation=True
 def load_file_cached(timestamp):
     jel_des = pd.read_pickle("Data/jel_des.pkl")
     jel_labels = joblib.load("Data/jel_labels.pkl")
