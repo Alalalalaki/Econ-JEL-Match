@@ -14,7 +14,7 @@ st.set_page_config(page_title=None, page_icon=None, layout='centered', initial_s
 """
 
 
-@st.cache(show_spinner=False)  # allow_output_mutation=True
+@st.cache(show_spinner=False)  # , allow_output_mutation=True
 def load_file_cached(timestamp):
     jel_des = pd.read_csv("Data/jel_des.csv", index_col="jel")
     jel_labels = joblib.load("Data/jel_labels.pkl")
@@ -22,9 +22,9 @@ def load_file_cached(timestamp):
     return jel_des, jel_labels, vectorizer, classifier
 
 
-def load_file():
-    update_timestamp = os.path.getmtime("Data/model.pkl")
-    return load_file_cached(update_timestamp)
+# def load_file():
+#     update_timestamp = os.path.getmtime("Data/model.pkl")
+#     return load_file_cached(update_timestamp)
 
 
 def local_css(file_name):
@@ -107,7 +107,7 @@ def main():
         </div>""",
         unsafe_allow_html=True)
 
-    jel_des, jel_labels, vectorizer, classifier = load_file()
+    jel_des, jel_labels, vectorizer, classifier = load_file_cached()
 
     jel_load_state = st.empty()
 
