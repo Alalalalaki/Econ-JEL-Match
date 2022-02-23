@@ -75,12 +75,12 @@ def sidebar_info():
     A few JEL codes that are rare in the literature are dropped, and <font style="color:green;">the model favors the JEL codes that are common</font>.<br>
     The results shown are the top 20 JEL codes predicted by the model and you can choose to show more or less by setting the config below.<br>
     The model currectly has <font style="color:green;">over 70 percent accuracy (true positive)</font> on the test sample.<br>
-    <font style="color:green;">If you feel that the results are not satisfactory, you can try adding more representative texts from your paper or directly entering the keywords that you are looking for (highly recommended).</font><br>
+    If you feel that the results are not satisfactory, you can try <font style="color:green;">adding more representative texts from your paper or directly entering the keywords that you are looking for (highly recommended).</font><br>
     </div>
     """, unsafe_allow_html=True)  # Author: Xuanli Zhu.<br>
 
     st.sidebar.header("Config")
-    top_n = st.sidebar.number_input('# of JEL codes predicted', value=20, min_value=10, max_value=50)
+    top_n = st.sidebar.slider('# of top JEL codes shown', value=20, min_value=10, max_value=30)
 
     st.sidebar.header("Report Issues")
     st.sidebar.markdown("""
