@@ -114,7 +114,7 @@ def main():
     if button_clicked:
         jel_load_state.markdown('Matching ...')
         y_predict_jel = predict(abstract, vectorizer, classifier, jel_labels, top_n)
-        jel_load_state.markdown('Matched JEL Codes:')
+        jel_load_state.markdown(f'Top {top_n} JEL Codes Matched:')
         show_jels(y_predict_jel, jel_des)
 
 
