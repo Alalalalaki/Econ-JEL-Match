@@ -73,9 +73,9 @@ def sidebar_info():
     This is a simple app to match JEL codes for economics papers based on the abstract text.<br>
     It uses a simple logistic regression model trained on real economics publications in last 20 years.<br>
     A few JEL codes that are rare in the literature are dropped, and <font style="color:green;">the model favors the JEL codes that are common</font>.<br>
-    The results shown are the top 20 JEL codes predicted by the model and you can choose to show more by setting the config below.<br>
+    The results shown are the top 20 JEL codes predicted by the model and you can choose to show more or less by setting the config below.<br>
     The model currectly has <font style="color:green;">over 70 percent accuracy (true positive)</font> on the test sample.<br>
-    <font style="color:green;">If you feel that the results are not satisfactory, you can try adding more representative texts from your paper or directly entering the keywords that you are looking for.</font>
+    <font style="color:green;">If you feel that the results are not satisfactory, you can try adding more representative texts from your paper or directly entering the keywords that you are looking for (highly recommended).</font><br>
     </div>
     """, unsafe_allow_html=True)  # Author: Xuanli Zhu.<br>
 
@@ -85,7 +85,7 @@ def sidebar_info():
     st.sidebar.header("Report Issues")
     st.sidebar.markdown("""
     <div style="font-size: small">
-    Report an issue or suggestion at <a href="https://github.com/Alalalalaki/Econ-JEL-Match" target="_blank" rel="noopener noreferrer">github repo</a>
+    Report an issue or a suggestion at <a href="https://github.com/Alalalalaki/Econ-JEL-Match" target="_blank" rel="noopener noreferrer">github repo</a>
     </div>
     """, unsafe_allow_html=True)
     return top_n
