@@ -20,8 +20,12 @@ def stemming(sentence, stemmer):
 
 
 def prepare_data():
-    # https://media.githubusercontent.com/media/Alalalalaki/Econ-Paper-Search/main/Data/papers.csv
-    df = pd.read_csv("https://github.com/Alalalalaki/Econ-Paper-Search/blob/main/Data/papers.csv?raw=true")
+    def url(x): return f"https://github.com/Alalalalaki/Econ-Paper-Search/blob/main/Data/{x}.csv?raw=true"
+    df1 = pd.read_csv(url("papers_b2000.csv"))
+    df2 = pd.read_csv(url("papers_2000s.csv"))
+    df3 = pd.read_csv(url("papers_2010s.csv"))
+    df4 = pd.read_csv(url("papers_recent.csv"))
+    df = pd.concat([df1, df2, df3, df4], axis=0)
 
     # borrow from Econ-Paper-Search
     # drop book reviews (not perfect)
