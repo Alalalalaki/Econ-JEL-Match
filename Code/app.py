@@ -6,7 +6,7 @@ import joblib
 from nltk.stem.snowball import SnowballStemmer
 from train import stemming, find_top_predict
 
-st.set_page_config(page_title=None, page_icon=None, layout='centered', initial_sidebar_state='collapsed')
+st.set_page_config(page_title=None, page_icon=None, layout='centered', initial_sidebar_state='auto')
 
 """
 # Econ JEL Code Match
@@ -78,6 +78,13 @@ def sidebar_info():
     If you feel that the results are not satisfactory, you can try <font style="color:green;">adding more representative texts from your paper or directly entering the keywords that you are looking for (highly recommended).</font><br>
     </div>
     """, unsafe_allow_html=True)  # Author: Xuanli Zhu.<br>
+
+    st.sidebar.header("Author")
+    st.sidebar.markdown("""
+    <div style="font-size: small">
+    <a href="http://www.zhuxuanli.com/" target="_blank" rel="noopener noreferrer">Xuanli Zhu</a>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.sidebar.header("Config")
     top_n = st.sidebar.slider('# of top JEL codes shown', value=20, min_value=10, max_value=30)
