@@ -79,12 +79,12 @@ def sidebar_info():
     </div>
     """, unsafe_allow_html=True)  # Author: Xuanli Zhu.<br>
 
-    st.sidebar.header("Author")
-    st.sidebar.markdown("""
-    <div style="font-size: small">
-    <a href="http://www.zhuxuanli.com/" target="_blank" rel="noopener noreferrer">Xuanli Zhu</a>
-    </div>
-    """, unsafe_allow_html=True)
+    # st.sidebar.header("Author")
+    # st.sidebar.markdown("""
+    # <div style="font-size: small">
+    # <a href="http://www.zhuxuanli.com/" target="_blank" rel="noopener noreferrer">Xuanli Zhu</a>
+    # </div>
+    # """, unsafe_allow_html=True)
 
     st.sidebar.header("Config")
     top_n = st.sidebar.slider('# of top JEL codes shown', value=20, min_value=10, max_value=30)
